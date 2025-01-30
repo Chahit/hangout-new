@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
+import { createClient } from '@/lib/supabase/client';
 import { User, MessageSquare } from 'lucide-react';
 import UserSearch from '@/components/UserSearch';
 import Link from 'next/link';
@@ -41,7 +41,7 @@ interface Chat {
 export default function MessagesPage() {
   const [recentChats, setRecentChats] = useState<Chat[]>([]);
   const [loading, setLoading] = useState(true);
-  const supabase = createClientComponentClient();
+  const supabase = createClient();
 
   useEffect(() => {
     const fetchRecentChats = async () => {

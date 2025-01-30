@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect, useCallback } from 'react';
-import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
+import { createClient } from '@/lib/supabase/client';
 import { Plus, ArrowUpDown, X, Upload, Heart, MessageCircle, Share, Check, Trash2 } from 'lucide-react';
 import { format } from 'date-fns';
 import { motion } from 'framer-motion';
@@ -223,7 +223,7 @@ export default function MemesPage() {
   const [selectedMeme, setSelectedMeme] = useState<MemeWithLikes | null>(null);
   const [commentContent, setCommentContent] = useState('');
   const [shareSuccess, setShareSuccess] = useState<string | null>(null);
-  const supabase = createClientComponentClient();
+  const supabase = createClient();
 
   const getCurrentUser = useCallback(async () => {
     const { data: { user } } = await supabase.auth.getUser();

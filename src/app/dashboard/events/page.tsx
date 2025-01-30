@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect, useCallback } from 'react';
-import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
+import { createClient } from '@/lib/supabase/client';
 import { Plus, X, ArrowRight, Calendar, Clock, MapPin, Users, Loader2 } from 'lucide-react';
 import { format } from 'date-fns';
 import { motion } from 'framer-motion';
@@ -144,7 +144,7 @@ const isParticipant = (event: Event, userId: string): boolean => {
 };
 
 export default function EventsPage() {
-  const supabase = createClientComponentClient<Database>();
+  const supabase = createClient<Database>();
   const [events, setEvents] = useState<Event[]>([]);
   const [loading, setLoading] = useState(true);
   const [showCreateModal, setShowCreateModal] = useState(false);

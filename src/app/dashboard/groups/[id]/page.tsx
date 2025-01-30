@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState, useCallback } from 'react';
-import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
+import { createClient } from '@/lib/supabase/client';
 import { useParams } from 'next/navigation';
 import { Send, ArrowLeft } from 'lucide-react';
 import Link from 'next/link';
@@ -54,7 +54,7 @@ type GroupInfo = {
 
 export default function GroupChatPage() {
   const params = useParams();
-  const supabase = createClientComponentClient();
+  const supabase = createClient();
   const [messages, setMessages] = useState<Message[]>([]);
   const [newMessage, setNewMessage] = useState('');
   const [groupInfo, setGroupInfo] = useState<GroupInfo | null>(null);
