@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Convert SVG to PNG</title>
+</head>
+<body>
+    <canvas id="canvas" width="512" height="512" style="display: none;"></canvas>
+    <img id="source" src="logo.svg" style="display: none;">
+    <a id="download" download="logo.png">Download PNG</a>
+    
+    <script>
+        window.onload = function() {
+            const canvas = document.getElementById('canvas');
+            const ctx = canvas.getContext('2d');
+            const img = document.getElementById('source');
+            const download = document.getElementById('download');
+            
+            img.onload = function() {
+                ctx.drawImage(img, 0, 0);
+                download.href = canvas.toDataURL('image/png');
+                download.click();
+            };
+        };
+    </script>
+</body>
+</html> 
